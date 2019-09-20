@@ -37,5 +37,4 @@ export default function SearchForm(onSubmit) {
   )
 }
       
-     // Add a search form here
 

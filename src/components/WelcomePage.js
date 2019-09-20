@@ -2,10 +2,14 @@ import React from "react";
 import styled from "styled-components";
 const StyleMain = styled.section`
 
-  &:hover{
+  header{
+    h1{
+      &:hover{
     opacity: 0.8;
     color: purple
     font-style: italic;
+      }
+    }
   }
 `
 
