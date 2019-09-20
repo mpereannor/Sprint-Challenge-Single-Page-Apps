@@ -1,11 +1,9 @@
 import React from "react";
-import {Link} from "react-router-dom";
 
-export default function CharacterCard(props) {
-  const{id, title, status, species, type, gender} = props.character
+export default function CharacterCard(prop) {
+  const {title, status, species, type, gender} = prop
 
   return (
-  
   
   // <span>todo: character</span>;
   <div className='character-card'>
