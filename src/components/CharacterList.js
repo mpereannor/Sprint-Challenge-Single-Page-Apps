@@ -15,7 +15,6 @@ export default function CharacterList(props) {
 
     // Inspect the data you get back from the server. Get familiar with it. Set it to your state, pass that state to a component. Map over it
 
-      debugger;
     axios
     .get(`https://rickandmortyapi.com/api/character`)
     .then(response => {
@@ -24,7 +23,7 @@ export default function CharacterList(props) {
     .catch(error =>{
       console.log(error);
     });
-}, []);
+}, [characters]);
 
 
   return (
@@ -32,7 +31,12 @@ export default function CharacterList(props) {
       <h2>
         {
           characters.map(ch => (
-            <CharacterCard ch = {characters}/>
+            < CharacterCard
+            xname = {ch.name}
+            xspecies = {ch.species}
+            xgender ={ch.gender}
+            />
+
           ))
         }
       </h2>

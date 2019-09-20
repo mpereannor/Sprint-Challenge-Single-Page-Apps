@@ -1,17 +1,14 @@
 import React from "react";
 
-export default function CharacterCard(prop) {
-  const {title, status, species, type, gender} = prop
+export default function CharacterCard (props) {
 
   return (
   
-  // <span>todo: character</span>;
   <div className='character-card'>
-    <h2>{title}</h2>
-    <p>{status}</p>
-    <p>{species}</p>
-    <p>{type}</p>
-    <p>{gender}</p>
+    <h2>{props.xname}</h2>
+    <p>{props.xspecies}</p>
+    <p>{props.xgender}</p> 
   </div>
   )
 }
+

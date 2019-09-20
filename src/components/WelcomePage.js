@@ -1,4 +1,5 @@
 import React from "react";
+import {BrowseRouter as Router, Route, Link} from 'react-router-dom';
 
 export default function WelcomePage() {
   return (
