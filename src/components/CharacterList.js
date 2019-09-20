@@ -16,7 +16,7 @@ export default function CharacterList(props) {
     // Inspect the data you get back from the server. Get familiar with it. Set it to your state, pass that state to a component. Map over it
 
     axios
-    .get(`https://rick-api.herokuapp.com/api/character`)
+    .get(`https://rickandmortyapi.com/api/character`)
     .then(response => {
       setCharacters(response.data.results)
     })
