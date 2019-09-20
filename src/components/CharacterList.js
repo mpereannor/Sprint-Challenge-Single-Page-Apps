@@ -11,6 +11,8 @@ export default function CharacterList() {
     //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
     // const dependencyArray = 
 
+    // Inspect the data you get back from the server. Get familiar with it. Set it to your state, pass that state to a component. Map over it
+
     const getCharacters = () => {
     axios
     .get(`https://rick-api.herokuapp.com/api/character `)
@@ -38,4 +40,3 @@ export default function CharacterList() {
   );
 };
 
-export default CharacterList;
