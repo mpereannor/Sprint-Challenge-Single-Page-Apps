@@ -6,12 +6,13 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import SearchForm from "./components/SearchForm.js";
 
 export default function App() {
+ 
   return (
       <main>
         <Header />
         <Route exact path='/' component={WelcomePage}/>
-        <Route exact path='/' component={CharacterList}/>
         <SearchForm/>
+        <Route exact path='/' component={CharacterList}/>
       </main>
   );
 }

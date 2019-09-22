@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 const CharacterDesign = styled.div`
   display: flex;
-  flex-direction: column;
-
-`
+  justify-content: space-around;
+  vertical-align: baseline;
+`;
 
 
 export default function CharacterCard (props) {
@@ -13,9 +13,11 @@ export default function CharacterCard (props) {
   return (
   
   <CharacterDesign className='character-card'>
-    <img src={props.ximage}/> 
     <div>
-      <h2>{props.xname}</h2>
+      <img src={props.ximage}/> 
+    </div>
+    <div>
+      <h3>{props.xname}</h3>
       <p>{props.xspecies}</p>
       <p>{props.xgender}</p>
     </div>
