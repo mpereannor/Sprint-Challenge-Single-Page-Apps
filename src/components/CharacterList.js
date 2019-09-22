@@ -32,6 +32,7 @@ export default function CharacterList(props) {
         {
           characters.map(ch => (
             < CharacterCard
+            ximage = {ch.image}
             xname = {ch.name}
             xspecies = {ch.species}
             xgender ={ch.gender}

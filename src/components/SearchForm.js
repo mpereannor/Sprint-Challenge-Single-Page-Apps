@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
+import axios from 'axios';
 
 const validationSchema = yup.object().shape({
   name: yup.string()
@@ -8,12 +9,33 @@ const validationSchema = yup.object().shape({
 
 
 
-export default function SearchForm(onSubmit) {
+export default function SearchForm(props) {
+  
+
+  const [searchName, setSearchName] = useState('');
+  const [characters, setCharacters] = useState([]);
+
+  const filterNames = (e) => {
+    setSearchName(e.target.value);
+  }
+
+  const search = (e) => {
+    e.preventDefault();
+    setCharacters(characters.filter(ch => {
+      return ch.name.includes(searchName)
+    }))
+  };
+
+  useEffect(() => {
+    axios.get('https://rickandmortyapi.com/api/character')
+    .then(response => {
+      setCharacters(response.data.results)
+    })
+  }, []);
  
   return (
     <Formik 
         validationSchema={validationSchema}
-        onSubmit = {onSubmit}
 
         render ={ () => {
           return (
@@ -21,10 +43,11 @@ export default function SearchForm(onSubmit) {
               <section className="search-form">
                 <label>
                     Search By Name 
-                    <input type="text" placeholder="where's summer?" />
+                    <input type="search"  value={searchName} onChange={filterNames}placeholder="where's summer?" />
                     <ErrorMessage name='name' component='div'/>
                 </label>
-                  
+                <button onClick={search}>Enter</button>
+ 
               </section>  
             </Form>
 
