@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from "react";
 import CharacterCard from "./CharacterCard";
 import axios from 'axios';
+import SearchForm from "./SearchForm";
 
 
 export default function CharacterList(props) {
-  // TODO: Add useState to track data from useEffect
   const [characters, setCharacters] = useState([]);
+  const [searchName, setSearchName] = useState('');
+  const [filtercharacters, setFilterCharacters] = useState([]);
 
   useEffect(() => {
-    // const id = props.match.params.id
-    // TODO: Add API Request here - must run in `useEffect`
-    //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
-    // const dependencyArray = 
-
-    // Inspect the data you get back from the server. Get familiar with it. Set it to your state, pass that state to a component. Map over it
-
+   
     axios
     .get(`https://rickandmortyapi.com/api/character`)
     .then(response => {
@@ -23,24 +19,43 @@ export default function CharacterList(props) {
     .catch(error =>{
       console.log(error);
     });
-}, [characters]);
+  }, []);
 
+
+const search = (e) => {
+  setSearchName(e.target.value)
+  let filtercharacters = [];
+
+  filtercharacters = characters.filter(ch =>{
+    return ch.name.includes(e.target.value)
+  });
+
+  setFilterCharacters(filtercharacters);
+  
+};
+
+let characterToDisplay = characters;
+
+if(searchName) {
+  characterToDisplay = filtercharacters;
+
+}
 
   return (
     <section className="character-list">
-      <h2>
+      <SearchForm onSearch={search} searchName ={searchName}/>
         {
-          characters.map(ch => (
-            < CharacterCard
-            ximage = {ch.image}
-            xname = {ch.name}
-            xspecies = {ch.species}
-            xgender ={ch.gender}
-            />
-
-          ))
+          characterToDisplay.map(ch => {
+            return (
+              < CharacterCard
+              ximage = {ch.image}
+              xname = {ch.name}
+              xspecies = {ch.species}
+              xgender ={ch.gender}
+              />
+            )
+          })
         }
-      </h2>
     </section>
   );
 };

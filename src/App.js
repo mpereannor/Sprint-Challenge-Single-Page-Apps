@@ -10,8 +10,7 @@ export default function App() {
   return (
       <main>
         <Header />
-        <Route exact path='/' component={WelcomePage}/>
-        <SearchForm/>
+        {/* <Route exact path='/' component={WelcomePage}/> */}
         <Route exact path='/' component={CharacterList}/>
       </main>
   );

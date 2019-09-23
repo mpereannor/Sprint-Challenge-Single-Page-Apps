@@ -1,63 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as yup from 'yup';
-import axios from 'axios';
-
-const validationSchema = yup.object().shape({
-  name: yup.string()
-  .required('invalid format')});
-
+import React from "react";
 
 
 export default function SearchForm(props) {
   
+  const {onSearch, searchName} = props; //this is a destructure properties coming from characterlist 
 
-  const [searchName, setSearchName] = useState('');
-  const [characters, setCharacters] = useState([]);
 
-  const filterNames = (e) => {
-    setSearchName(e.target.value);
-  }
-
-  const search = (e) => {
-    e.preventDefault();
-    setCharacters(characters.filter(ch => {
-      return ch.name.includes(searchName)
-    }))
-  };
-
-  useEffect(() => {
-    axios.get('https://rickandmortyapi.com/api/character')
-    .then(response => {
-      setCharacters(response.data.results)
-    })
-  }, []);
- 
   return (
-    <Formik 
-        validationSchema={validationSchema}
-
-        render ={ () => {
-          return (
-            <Form>
-              <section className="search-form">
-                <label>
-                    Search By Name 
-                    <input type="search"  value={searchName} onChange={filterNames}placeholder="where's summer?" />
-                    <ErrorMessage name='name' component='div'/>
-                </label>
-                <button onClick={search}>Enter</button>
- 
-              </section>  
-            </Form>
+       
+      <section className="search-form">
+        <label htmlFor='nameInput'>
+            Search By Name 
+        </label>
+            <input onChange={onSearch} value={searchName} input id='searchInput' type='text'/>
+      </section>  
 
           )
 
-        } 
+        }
 
-    }
-    />
-  )
-}
+  
       
 
