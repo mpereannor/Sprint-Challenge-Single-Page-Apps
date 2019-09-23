@@ -1,10 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function SearchForm() {
- 
+
+export default function SearchForm(props) {
+  
+  const {onSearch, searchName} = props; //this is a destructure properties coming from characterlist 
+
+
   return (
-    <section className="search-form">
-     // Add a search form here
-    </section>
-  );
-}
+       
+      <section className="search-form">
+        <label htmlFor='nameInput'>
+            Search By Name 
+        </label>
+            <input onChange={onSearch} value={searchName} input id='searchInput' type='text'/>
+      </section>  
+
+          )
+
+        }
+
+  
+      
+
