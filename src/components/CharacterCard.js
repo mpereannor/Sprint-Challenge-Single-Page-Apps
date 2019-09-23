@@ -2,10 +2,19 @@ import React from "react";
 import styled from 'styled-components';
 
 const CharacterDesign = styled.div`
+  
   display: flex;
-  // justify-content: center;
-  // vertical-align: baseline;
+  justify-content: center;
   margin: auto;
+  max-width: 100%
+  padding-bottom: 20px;
+`;
+
+const InfoDesign = styled.div`
+  background: linear-gradient(to top, #ff00cc, #333399);
+  padding-left: 40px;
+  padding-right: 40px;
+  flex-wrap: wrap;
 `;
 
 
@@ -17,11 +26,11 @@ export default function CharacterCard (props) {
     <div>
       <img src={props.ximage}/> 
     </div>
-    <div>
+    <InfoDesign>
       <h3>{props.xname}</h3>
       <p>{props.xspecies}</p>
       <p>{props.xgender}</p>
-    </div>
+    </InfoDesign>
 
   </CharacterDesign>
   )
