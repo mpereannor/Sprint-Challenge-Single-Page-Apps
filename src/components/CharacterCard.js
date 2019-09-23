@@ -3,8 +3,9 @@ import styled from 'styled-components';
 
 const CharacterDesign = styled.div`
   display: flex;
-  justify-content: space-around;
-  vertical-align: baseline;
+  // justify-content: center;
+  // vertical-align: baseline;
+  margin: auto;
 `;
 
 
